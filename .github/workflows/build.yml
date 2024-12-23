@@ -35,5 +35,5 @@ jobs:
               "username": "${{ github.actor }}",
               "password": "${{ secrets.MAVEN_REPO_READ }}"
            }]    - name: Build with Maven
-      run: mvn -B -q package --file pom.xml
+    - run: mvn -B -q package --file pom.xml
 
