@@ -1,0 +1,40 @@
+# This workflow will build the branch with Maven.
+# Only if it is NOT main
+
+name: Java build with Maven
+
+on:
+  push:
+    branches-ignore: 
+      - 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 21
+      uses: actions/setup-java@v3
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+        server-id: github 
+        server-username: ${{ github.actor }}
+        server-password: ${{ secrets.MAVEN_REPO_READ }} 
+    - name: Settings.xml
+      uses: s4u/maven-settings-action@v3.0.0
+      with:
+        githubServer: false
+        servers: |
+           [{
+              "id": "github",
+              "username": "${{ github.actor }}",
+              "password": "${{ secrets.MAVEN_REPO_READ }}"
+           }]
+    - name: Build with Maven
+      run: mvn -B -q package --file pom.xml
+
