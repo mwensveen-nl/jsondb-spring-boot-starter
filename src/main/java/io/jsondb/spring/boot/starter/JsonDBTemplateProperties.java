@@ -1,12 +1,22 @@
 package io.jsondb.spring.boot.starter;
 
-public class JsonDBTemplateProperties {
+import jakarta.validation.constraints.NotBlank;
+import java.util.List;
 
+public class JsonDBTemplateProperties {
+    @Override
+    public String toString() {
+        return "JsonDBTemplateProperties [" + dbFilesLocation + ", " + baseScanPackage + ", " + compatibilityMode + ", " + schemaComparatorBean + ", " + cipherBean + ", " + collectionClassNames + "]";
+    }
+
+    @NotBlank
     private String dbFilesLocation;
+    @NotBlank
     private String baseScanPackage;
     private boolean compatibilityMode = false;
     private String schemaComparatorBean;
     private String cipherBean;
+    private List<String> collectionClassNames;
 
     public String getDbFilesLocation() {
         return dbFilesLocation;
@@ -46,6 +56,14 @@ public class JsonDBTemplateProperties {
 
     public void setCipherBean(String cipherBean) {
         this.cipherBean = cipherBean;
+    }
+
+    public List<String> getCollectionClassNames() {
+        return collectionClassNames;
+    }
+
+    public void setCollectionClassNames(List<String> collectionClassNames) {
+        this.collectionClassNames = collectionClassNames;
     }
 
 }

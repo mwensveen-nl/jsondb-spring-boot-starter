@@ -9,7 +9,7 @@ public class AutoconfigurationConfigJsonDBTemplate {
 
     @Bean
     public JsonDBTemplate template() {
-        return new JsonDBTemplate("target/dbfiles", "io.jsondb.spring.boot.starter.model");
+        return new JsonDBTemplate("target/jonsdb", "io.jsondb.spring.boot.starter.model");
     }
 
 }
