@@ -1,0 +1,8 @@
+io:
+   jsondb:
+     template:
+        dbFilesLocation: "target/dbfiles"
+        baseScanPackage: "io.jsondb.spring.boot.starter.model"
+#        compatibilityMode: 
+#        schemaComparatorBean: 
+#        cipherBean: 

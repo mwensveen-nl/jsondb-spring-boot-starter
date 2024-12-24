@@ -12,7 +12,7 @@ import org.springframework.util.ReflectionUtils;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(classes = { JsonDBAutoConfiguration.class, AutoConfigurationTestConfig.class, AutoconfigurationConfigJsonDBTemplate.class })
-@TestPropertySource(value = "classpath:application_test.yml", factory = YamlPropertySourceFactory.class)
+@TestPropertySource(value = "classpath:application-full.yml", factory = YamlPropertySourceFactory.class)
 class JsondbAutoConfigurationExisitingBeanTest {
 
     @Autowired
@@ -23,7 +23,7 @@ class JsondbAutoConfigurationExisitingBeanTest {
         Field field = ReflectionUtils.findField(JsonDBTemplate.class, "dbConfig");
         ReflectionUtils.makeAccessible(field);
         JsonDBConfig config = (JsonDBConfig) field.get(template);
-        assertEquals("target/dbfiles", config.getDbFilesLocationString());
+        assertEquals("target/jonsdb", config.getDbFilesLocationString());
         assertEquals("io.jsondb.DefaultSchemaVersionComparator", config.getSchemaComparator().getClass().getName());
     }
 
