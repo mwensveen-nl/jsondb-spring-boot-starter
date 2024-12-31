@@ -17,7 +17,7 @@ public class AutoConfigurationTestConfig {
         return new MySchemaVersionComparator();
     }
 
-    @Bean(name = "io.jsondb.spring.boot.starter.model.MyCipher")
+    @Bean(name = "MyCipher")
     public ICipher myCipher() throws GeneralSecurityException {
         return new Default1Cipher(Base64.getEncoder().encode("abc".getBytes()));
     }
