@@ -5,7 +5,7 @@ io:
         baseScanPackage: "io.jsondb.spring.boot.starter.model"
         compatibilityMode: true
         schemaComparatorBean: "MySchemaVersionComparator"
-        cipherBean: "io.jsondb.spring.boot.starter.model.MyCipher"
+        cipherBean: "MyCipher"
         collectionClassNames:
           - io.jsondb.spring.boot.starter.model.User
           - io.jsondb.spring.boot.starter.model.Address
