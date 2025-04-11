@@ -32,7 +32,7 @@
 	<properties>
 		<io.jsondb.version>2.1.2024122420</io.jsondb.version>
 		<spring.version>6.2.3</spring.version>
-		<spring.boot.version>3.4.3</spring.boot.version>
+		<spring.boot.version>3.4.4</spring.boot.version>
 		<spring.version>6.2.4</spring.version>
 		<compiler-plugin.version>3.13.0</compiler-plugin.version>
 		<java.version>21</java.version>
