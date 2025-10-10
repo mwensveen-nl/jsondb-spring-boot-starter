@@ -33,7 +33,7 @@
 		<io.jsondb.version>2.1.2025071939</io.jsondb.version>
 		<spring.version>6.2.11</spring.version>
 		<spring.boot.version>3.5.6</spring.boot.version>
-		<spring.version>6.2.10</spring.version>
+		<spring.version>6.2.11</spring.version>
 		<compiler-plugin.version>3.13.0</compiler-plugin.version>
 		<java.version>21</java.version>
 	</properties>
