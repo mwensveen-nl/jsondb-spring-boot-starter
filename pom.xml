@@ -30,7 +30,7 @@
 	</repositories>
 
 	<properties>
-		<io.jsondb.version>2.1.2025071939</io.jsondb.version>
+		<io.jsondb.version>2.1.2025110246</io.jsondb.version>
 		<spring.version>6.2.11</spring.version>
 		<spring.boot.version>3.5.7</spring.boot.version>
 		<spring.version>6.2.10</spring.version>
