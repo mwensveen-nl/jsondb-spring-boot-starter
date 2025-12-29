@@ -33,7 +33,7 @@
 		<java.version>21</java.version>
 
 		<io.jsondb.version>2.1.2025122950</io.jsondb.version>
-		<spring.version>6.2.13</spring.version>
+		<spring.version>6.2.14</spring.version>
 		<spring.boot.version>3.5.7</spring.boot.version>
 
 		<maven.compiler-plugin.version>3.13.0</maven.compiler-plugin.version>
