@@ -22,19 +22,10 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-        server-id: github 
-        server-username: ${{ github.actor }}
-        server-password: ${{ secrets.MAVEN_REPO_READ }} 
-    - name: Settings.xml
-      uses: s4u/maven-settings-action@v3.0.0
-      with:
-        githubServer: false
-        servers: |
-           [{
-              "id": "github",
-              "username": "${{ github.actor }}",
-              "password": "${{ secrets.MAVEN_REPO_READ }}"
-           }]
+    - name: echo settings
+      run:  cat /home/runner/.m2/settings.xml
     - name: Build with Maven
+      env:
+        GITHUB_TOKEN: ${{ secrets.MAVEN_REPO_READ }}
       run: mvn -B -q package --file pom.xml
 
