@@ -22,9 +22,9 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-        server-id: github 
-        server-username: ${{ github.actor }}
-        server-password: ${{ secrets.MAVEN_REPO_READ }} 
+#        server-id: github 
+#        server-username: ${{ github.actor }}
+#        server-password: ${{ secrets.MAVEN_REPO_READ }} 
     - name: echo settings
       run:  cat /home/runner/.m2/settings.xml
     - name: Settings.xml
