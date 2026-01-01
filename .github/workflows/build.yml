@@ -19,3 +19,4 @@ jobs:
       with:
         java-version: '21'
         github-token: ${{ secrets.MAVEN_REPO_READ }}
+      shell: bash
