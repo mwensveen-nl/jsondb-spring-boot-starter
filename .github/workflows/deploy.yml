@@ -13,34 +13,8 @@ jobs:
       contents: write
       packages: read
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 21
-      uses: actions/setup-java@v3
+    - uses: mwensveen-nl/github-action/deploy@main
       with:
         java-version: '21'
-        distribution: 'temurin'
-        cache: maven
-    - name: echo settings
-      run:  cat /home/runner/.m2/settings.xml
-    - name: mvn build
-      run: mvn -B-q clean verify
-    - name: Deploy and Tag
-      env: 
-        GITHUB_TOKEN: ${{ secrets.MAVEN_REPO_WRITE}} # GITHUB_TOKEN is the default env for the password of the github server in settings.xml
-      run: |
-        #set version in pom.xml
-        version=$(mvn exec:exec -Dexec.executable=echo -Dexec.args='${project.version}' --quiet | sed 's/\.[^.]*$//')
-        date=$(date '+%Y%m%d')
-        buildnr=${{github.run_number}}
-        newversion="$version.$date$buildnr"
-        echo "Setting version to $newversion"
-        mvn versions:set -DnewVersion="$newversion"
-        #deploy to a maven repo.
-        mvn deploy
-        #set git tag
-        remote=$(git remote)
-        git tag "$newversion"
-        git push "$remote" "$newversion"
-        #reset version in pom.xml
-        mvn versions:revert
+        github_token: ${{ secrets.MAVEN_REPO_WRITE}} # GITHUB_TOKEN is the default env for the password of the github server in settings.xml
 
