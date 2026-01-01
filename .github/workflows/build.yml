@@ -15,17 +15,7 @@ jobs:
       contents: read
       packages: read
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 21
-      uses: actions/setup-java@v3
+    - uses: mwensveen-nl/github-action/build@main
       with:
         java-version: '21'
-        distribution: 'temurin'
-        cache: maven
-    - name: echo settings
-      run:  cat /home/runner/.m2/settings.xml
-    - name: Build with Maven
-      env:
-        GITHUB_TOKEN: ${{ secrets.MAVEN_REPO_READ }}
-      run: mvn -B -q package --file pom.xml
-
+        github-token: ${{ secrets.MAVEN_REPO_READ }}
