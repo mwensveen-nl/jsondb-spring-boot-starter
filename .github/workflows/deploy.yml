@@ -16,5 +16,5 @@ jobs:
     - uses: mwensveen-nl/github-action/deploy@main
       with:
         java-version: '21'
-        github_token: ${{ secrets.MAVEN_REPO_WRITE}} # GITHUB_TOKEN is the default env for the password of the github server in settings.xml
+        github-token: ${{ secrets.MAVEN_REPO_WRITE}}
 
