@@ -14,39 +14,4 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-    - uses: actions/checkout@v4.1.1
-    - run: echo "repository = ${{ github.repository }}"
-    - run: echo "ref_name = ${{ github.ref_name }}"
-    - run: echo "commit before = ${{ github.event.before }}"
-    - run: echo "commit after = ${{ github.event.after }}"
-    - name: Check if PR already exists
-      id: check-pr-exists
-      run: |
-        count=$(gh pr list -H ${{ github.ref_name }} -B main --repo ${{ github.repository }} --json closed --jq 'length')
-        echo "$count"
-        if [ "$count" -gt 0 ]
-        then
-          echo skipping PR creation because the PR already exists
-          echo "run=false" >> "$GITHUB_OUTPUT"
-        else
-          echo "run=true" >> "$GITHUB_OUTPUT"
-        fi
-      env:
-        GH_TOKEN: ${{ github.token }}
-    - name: Check if push is branch creation
-      id: check-branch-creation
-      env:
-        GH_TOKEN: ${{ github.token }}
-      run: |
-        if [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]
-        then
-          echo skipping PR creation because event is a branch creation
-          echo "run=false" >> "$GITHUB_OUTPUT"
-        else
-          echo "run=true" >> "$GITHUB_OUTPUT"
-        fi 
-    - name: Create Pull Request
-      if: ${{ steps.check-pr-exists.outputs.run == 'true' && steps.check-branch-creation.outputs.run == 'true' }} 
-      run: gh pr create -B main --title "PR for ${{ github.ref_name }} to main" --body "Auto created by GitHub action" --head "${{ github.ref_name }}" --repo "${{ github.repository }}"
-      env:
-        GH_TOKEN: ${{ github.token }}
+    - uses: mwensveen-nl/github-action/createPR@main
