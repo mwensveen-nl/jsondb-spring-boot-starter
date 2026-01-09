@@ -34,7 +34,7 @@
 
 		<io.jsondb.version>2.1.2025123051</io.jsondb.version>
 		<spring.version>6.2.15</spring.version>
-		<spring.boot.version>3.5.8</spring.boot.version>
+		<spring.boot.version>3.5.9</spring.boot.version>
 
 		<maven.compiler-plugin.version>3.13.0</maven.compiler-plugin.version>
 	</properties>
